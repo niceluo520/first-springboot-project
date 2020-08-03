@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:shiro="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>玩玩</title>
+</head>
+<body>
+    <h2 th:text="${name}"></h2>
+    <br/>
+    <div shiro:hasPermission="user:add">
+    <a href="add">用户添加</a><br/>
+    </div>
+    <div shiro:hasPermission="user:update">
+    <a href="update">用户更新</a><br/>
+    </div>
+    <br/>
+
+    <p>文件上传：</p>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file"><br/>
+        <input type="submit" value="上传">
+    </form>
+    <br/>
+    <p>多文件上传：</p>
+    <form action="/batch" method="post" enctype="multipart/form-data">
+        文件1：<input type="file" name="file"><br/>
+        文件2：<input type="file" name="file"><br/>
+        <input type="submit" value="上传">
+    </form>
+
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
